@@ -34,8 +34,16 @@ p {
     height: 100px;
     background-color: #ffffff18;
     cursor: default;
+    transition: all .07s ease;
 }
 
-.drum:hover {
+/* .drum:hover {
     cursor: pointer;
+} */
+
+.active {
+    color: #ffee00;
+    border-color: #ffee00;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ffee00;
 }
