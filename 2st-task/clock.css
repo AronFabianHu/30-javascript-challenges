@@ -49,3 +49,7 @@ body {
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+.clock p {
+    font-size: 1.3em;
+}
