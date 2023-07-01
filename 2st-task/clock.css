@@ -30,6 +30,21 @@ body {
         0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.clock::after {
+    content: '';
+
+    background-color: black;
+    width: 6px;
+    height: 6px;
+    z-index: 12;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+
+}
+
 .clock-face {
     position: relative;
     width: 100%;
