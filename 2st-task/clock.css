@@ -44,10 +44,11 @@ body {
     background: black;
     position: absolute;
     top: 50%;
-    transform: rotate(90deg);
-    transform-origin: 100%;
-    transition: all 0.05s;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    left: 50%;
+    transform: rotate(-90deg);
+    transform-origin: left;
+    /* transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
 }
 
 .clock p {
