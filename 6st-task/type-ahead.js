@@ -4,12 +4,12 @@ const cities = [];
 const prom = fetch(endpoint)
     .then(blob => blob.json())
     .then(data => cities.push(...data))
-console.log(prom);
+// console.log(prom);
 
 
 function findMatches(wordToMatch, cities) {
     return cities.filter(place => {
-        //here we need to fiugre otu if the city or state matches what was searched
+        //here we need to fiugre out if the city or state matches what was searched
         const regex = new RegExp(wordToMatch, 'gi');
         return place.city.match(regex) || place.state.match(regex);
     })
