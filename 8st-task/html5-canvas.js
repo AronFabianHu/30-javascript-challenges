@@ -54,3 +54,15 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
+
+
+
+
+canvas.addEventListener('touchstart', (e) => {
+    isDrawing = true;
+    lastX = e.offsetX;
+    lastY = e.offsetY;
+});
+
+canvas.addEventListener('touchmove', draw);
+canvas.addEventListener('touchend', () => isDrawing = false);
