@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Key Detection</title>
+</head>
+
+<body>
+  <h1>Just type the secret code</h1>
+  <p>/Secret code is = unicorn/</p>
+  <script src="cornify.js"></script>
+  <script>
+    const secretcode = 'unicorn';
+    const typing = [];
+    window.addEventListener('keyup', (e) => {
+      typing.push(e.key)
+      typing.splice(-secretcode.length - 1, typing.length - secretcode.length)
+      if (typing.join('').includes(secretcode)) {
+        console.log('DING, DING!')
+        cornify_add()
+      }
+    })
+
+  </script>
+</body>
+
+</html>
