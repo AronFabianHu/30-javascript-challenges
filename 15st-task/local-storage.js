@@ -2,6 +2,7 @@ const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
 const items = JSON.parse(localStorage.getItem('items')) || [];
 const clear = document.querySelector('#clear')
+const unCheck = document.querySelector('#unCheck')
 
 
 function addItem(e) {
@@ -41,11 +42,12 @@ function toggleDone(e) {
     populateList(items, itemsList);
 }
 
-function clearing() {
-    itemsList.innerHTML = ''
-    localStorage.clear()
-    item = [];
-}
+
+
+
+
+
+
 
 
 addItems.addEventListener('submit', addItem);
@@ -53,10 +55,33 @@ itemsList.addEventListener('click', toggleDone);
 
 populateList(items, itemsList);
 
-
 function clearing() {
     itemsList.innerHTML = '';
     localStorage.clear();
     items.length = 0;
 }
 clear.addEventListener('click', clearing);
+
+
+
+
+
+
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+
+
+function unCheckAll() {
+    checkboxes.forEach((e) => {
+        console.dir(e)
+        const index = e.dataset.index;
+        console.log(e.checked)
+        items[index].done = false;
+        localStorage.setItem('items', JSON.stringify(items));
+        populateList(items, itemsList);
+    })
+
+}
+
+
+unCheck.addEventListener('click', unCheckAll);
