@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dropdown Menu</title>
+  <link rel="stylesheet" href="dropdown-menu.css">
+</head>
+
+<body>
+  <h2>Cool</h2>
+  <nav class="top">
+    <div class="dropdownBackground">
+      <span class="arrow"></span>
+    </div>
+
+    <ul class="cool">
+      <li>
+        <a href="#">About Me</a>
+        <div class="dropdown dropdown1">
+          <div class="bio">
+            <img src="https://levelupmarketing.hu/images/Aron-Fabian-portrait.jpg">
+            <p>Aron Fabian sure does love web development. He learning things like JavaScript, CSS and BBQ. Wait. BBQ
+              isn't
+              part of web development. It should be though!</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Portfolio</a>
+        <ul class="dropdown portfolio">
+          <li>
+            <span class="code">ONE</span>
+            <a href="#">First Portfolio</a>
+          </li>
+          <li>
+            <span class="code">TWO</span>
+            <a href="#">Second Portfolio</a>
+          </li>
+          <li>
+            <span class="code">THREE</span>
+            <a href="#">Third Portfolio</a>
+          </li>
+          <li>
+            <span class="code">FOUR</span>
+            <a href="#">Fourth Portfolio</a>
+          </li>
+          <li>
+            <span class="code">FIVE</span>
+            <a href="#">Fifth Portfolio</a>
+          </li>
+          <li>
+            <span class="code">SIX</span>
+            <a href="#">Sixth Portfolio</a>
+          </li>
+          <li>
+            <span class="code">SEVEN</span>
+            <a href="#">Seventh Portfolio</a>
+          </li>
+          <li>
+            <span class="code">EIGHT</span>
+            <a href="#">Eighth Portfolio</a>
+          </li>
+          <li>
+            <span class="code">NINE</span>
+            <a href="#">Ninth Portfolio</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Other Links</a>
+        <ul class="dropdown dropdown3">
+          <li><a class="button" href="https://levelupmarketing.hu/index.html#contact">Contact</a></li>
+          <li><a class="button" href="https://www.linkedin.com/in/aron-fabian-970427170/">LinkedIn</a></li>
+          <li><a class="button" href="https://levelupmarketing.hu/">Blog</a></li>
+          <li><a class="button" href="https://levelupmarketing.hu/index.html#portfolio">My Portfolio</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+  <script>
+
+
+    const triggers = document.querySelectorAll('.cool > li')
+    const background = document.querySelector('.dropdownBackground')
+    const nav = document.querySelector('.top')
+
+    function handleEnter() {
+      this.classList.add('trigger-enter')
+      setTimeout(() => {
+        if (this.classList.contains('trigger-enter')) {
+          this.classList.add('trigger-enter-active')
+        }
+      }, 200)
+      background.classList.add('open')
+      background.style.width = this.offsetWidth
+
+      const dropdown = this.querySelector('.dropdown')
+      const navCoords = nav.getBoundingClientRect();
+      const dropdownCoords = dropdown.getBoundingClientRect();
+      const coords = {
+        width: dropdownCoords.width,
+        height: dropdownCoords.height,
+        top: dropdownCoords.top + window.scrollY - navCoords.top,
+        left: dropdownCoords.left + window.scrollX - navCoords.left
+      };
+
+      background.style.width = `${coords.width}px`;
+      background.style.height = `${coords.height}px`;
+      background.style.transform = `translate(${coords.left}px, ${coords.top}px)`
+      console.dir(dropdownCoords)
+    }
+
+    function handleLeave() {
+      this.classList.remove('trigger-enter', 'trigger-enter-active')
+      background.classList.remove('open')
+    }
+
+    triggers.forEach((trigger) => { trigger.addEventListener('mouseenter', handleEnter) })
+    triggers.forEach((trigger) => { trigger.addEventListener('mouseleave', handleLeave) })
+  </script>
+
+</body>
+
+</html>
