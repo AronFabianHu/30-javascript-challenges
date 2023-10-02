@@ -57,12 +57,26 @@ canvas.addEventListener('mouseout', () => isDrawing = false);
 
 
 
-
 canvas.addEventListener('touchstart', (e) => {
     isDrawing = true;
-    lastX = e.offsetX;
-    lastY = e.offsetY;
+    // Get touch position relative to the canvas
+    const touch = e.touches[0];
+    lastX = touch.clientX - canvas.getBoundingClientRect().left;
+    lastY = touch.clientY - canvas.getBoundingClientRect().top;
 });
 
-canvas.addEventListener('touchmove', draw);
-canvas.addEventListener('touchend', () => isDrawing = false);
+canvas.addEventListener('touchmove', (e) => {
+    // Prevent page scrolling
+    e.preventDefault();
+
+    if (isDrawing) {
+        const touch = e.touches[0];
+        const currentX = touch.clientX - canvas.getBoundingClientRect().left;
+        const currentY = touch.clientY - canvas.getBoundingClientRect().top;
+        draw({ offsetX: currentX, offsetY: currentY });
+    }
+});
+
+canvas.addEventListener('touchend', () => {
+    isDrawing = false;
+});
